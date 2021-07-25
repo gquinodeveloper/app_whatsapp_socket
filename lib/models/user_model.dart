@@ -3,6 +3,7 @@ import 'package:meta/meta.dart' show required;
 
 class UserModel {
   int id;
+  int room;
   String name;
   String lastname;
   String message;
@@ -11,6 +12,7 @@ class UserModel {
 
   UserModel({
     @required this.id,
+    @required this.room,
     @required this.name,
     @required this.lastname,
     @required this.message,
@@ -22,6 +24,7 @@ class UserModel {
 List<UserModel> users = [
   UserModel(
     id: 1,
+    room: 1,
     name: "Gustavo",
     lastname: "Quino 😂",
     message: "Lorem Ipsum es simplemente...",
@@ -30,90 +33,47 @@ List<UserModel> users = [
   ),
   UserModel(
     id: 2,
-    name: "Juan",
-    lastname: "Quino",
+    room: 1,
+    name: "Erika",
+    lastname: "Alma",
     message: "Lorem Ipsum es simplemente...",
     status: true,
-    path: "assets/profile_2.jpeg",
+    path: "assets/profile_6.jpeg",
   ),
   UserModel(
     id: 3,
-    name: "Bryan",
-    lastname: "Quino 😂",
+    room: 2,
+    name: "Academia",
+    lastname: "Móviles",
     message: "Lorem Ipsum es simplemente...",
     status: false,
-    path: "assets/profile_3.jpeg",
+    path: "assets/academia.png",
+  ),
+  UserModel(
+    id: 5,
+    room: 2,
+    name: "Xiomara",
+    lastname: "Futher",
+    message: "Lorem Ipsum es simplemente...",
+    status: false,
+    path: "assets/profile_5.jpeg",
   ),
   UserModel(
     id: 4,
-    name: "Karen",
-    lastname: "Quino",
+    room: 3,
+    name: "Pedro",
+    lastname: "Torres",
     message: "Lorem Ipsum es simplemente...",
     status: false,
     path: "assets/profile_4.jpeg",
   ),
   UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: true,
-    path: "assets/profile_5.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
+    id: 6,
+    room: 3,
+    name: "Alejandra",
     lastname: "Quino😀",
     message: "Lorem Ipsum es simplemente...",
     status: false,
-    path: "assets/profile_6.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: false,
-    path: "assets/profile_7.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: false,
-    path: "assets/profile_8.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino😀",
-    message: "Lorem Ipsum es simplemente...",
-    status: true,
-    path: "assets/profile_9.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: true,
-    path: "assets/profile_10.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: false,
-    path: "assets/profile_11.jpeg",
-  ),
-  UserModel(
-    id: 4,
-    name: "Karen",
-    lastname: "Quino",
-    message: "Lorem Ipsum es simplemente...",
-    status: false,
-    path: "assets/profile_12.jpeg",
+    path: "assets/profile_2.jpeg",
   ),
 ];

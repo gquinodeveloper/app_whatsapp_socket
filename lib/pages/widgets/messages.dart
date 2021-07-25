@@ -1,3 +1,4 @@
+import 'package:app_ui_whatsapp/pages/chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:app_ui_whatsapp/models/user_model.dart';
@@ -76,7 +77,6 @@ class Chats extends StatelessWidget {
         itemCount: users.length,
         itemBuilder: (context, index) {
           return ItemChat(user: users[index]);
-          //return;
         },
       ),
     );
@@ -91,87 +91,96 @@ class ItemChat extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
-    return Slidable(
-      actionPane: SlidableDrawerActionPane(),
-      actionExtentRatio: 0.25,
-      child: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.only(left: 5.0),
-          child: ListTile(
-            title: Text(
-              "${user.name} ${user.lastname}",
-              style: TextStyle(
-                fontSize: 15.0,
-                color: AppTheme.kDarkBlue,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            subtitle: Text(
-              user.message,
-              style: TextStyle(
-                fontSize: 11.0,
-                color: Colors.black38,
-              ),
-            ),
-            leading: Stack(
-              children: [
-                CircleAvatar(
-                  radius: 26.0,
-                  foregroundImage: AssetImage(user.path),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ChatPage(user: user),
+          ),
+        );
+      },
+      child: Slidable(
+        actionPane: SlidableDrawerActionPane(),
+        actionExtentRatio: 0.25,
+        child: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.only(left: 5.0),
+            child: ListTile(
+              title: Text(
+                "${user.name} ${user.lastname}",
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: AppTheme.kDarkBlue,
+                  fontWeight: FontWeight.w500,
                 ),
-                if (user.status)
-                  Positioned(
-                    right: 1,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 7.5,
+              ),
+              subtitle: Text(
+                user.message,
+                style: TextStyle(
+                  fontSize: 11.0,
+                  color: Colors.black38,
+                ),
+              ),
+              leading: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 26.0,
+                    foregroundImage: AssetImage(user.path),
+                  ),
+                  if (user.status)
+                    Positioned(
+                      right: 1,
                       child: CircleAvatar(
-                        radius: 5.0,
-                        backgroundColor: Colors.greenAccent[700],
+                        backgroundColor: Colors.white,
+                        radius: 7.5,
+                        child: CircleAvatar(
+                          radius: 5.0,
+                          backgroundColor: Colors.greenAccent[700],
+                        ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-            trailing: Text(
-              '10:00 am',
-              style: TextStyle(
-                fontSize: 11.0,
-                color: Colors.black38,
+                ],
+              ),
+              trailing: Text(
+                '10:00 am',
+                style: TextStyle(
+                  fontSize: 11.0,
+                  color: Colors.black38,
+                ),
               ),
             ),
           ),
         ),
+        actions: <Widget>[
+          IconSlideAction(
+            caption: 'Archive',
+            color: Colors.blue,
+            icon: Icons.archive,
+            onTap: () {},
+          ),
+          IconSlideAction(
+            caption: 'Share',
+            color: Colors.indigo,
+            icon: Icons.share,
+            onTap: () {},
+          ),
+        ],
+        secondaryActions: <Widget>[
+          IconSlideAction(
+            caption: 'More',
+            color: AppTheme.kLigth,
+            icon: Icons.more_horiz,
+            onTap: () {},
+          ),
+          IconSlideAction(
+            caption: 'Delete',
+            color: Colors.red,
+            icon: Icons.delete_outline_rounded,
+            onTap: () {},
+          ),
+        ],
       ),
-      actions: <Widget>[
-        IconSlideAction(
-          caption: 'Archive',
-          color: Colors.blue,
-          icon: Icons.archive,
-          onTap: () {},
-        ),
-        IconSlideAction(
-          caption: 'Share',
-          color: Colors.indigo,
-          icon: Icons.share,
-          onTap: () {},
-        ),
-      ],
-      secondaryActions: <Widget>[
-        IconSlideAction(
-          caption: 'More',
-          color: AppTheme.kLigth,
-          icon: Icons.more_horiz,
-          onTap: () {},
-        ),
-        IconSlideAction(
-          caption: 'Delete',
-          color: Colors.red,
-          icon: Icons.delete_outline_rounded,
-          onTap: () {},
-        ),
-      ],
     );
   }
 }
